@@ -62,3 +62,4 @@ namespace SinchBinding
     //    static extern UIImage SINUIImageFromVideoFrame (SINVideoFrame videoFrame);
     //}
 }
+

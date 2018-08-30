@@ -6,7 +6,8 @@ using ObjCRuntime;
 using UIKit;
 using CoreVideo;
 
-namespace SinchBinding {
+namespace SinchBinding
+{
 
     partial interface ISINClientDelegate { }
     partial interface ISINClientRegistration { }
@@ -34,7 +35,8 @@ namespace SinchBinding {
     partial interface ISINVideoFrame { }
 
     [Static]
-    partial interface Constants {
+    partial interface Constants
+    {
         // extern NSString *const SINClientDidStartNotification __attribute__((visibility("default")));
         [Field("SINClientDidStartNotification", "__Internal")]
         NSString SINClientDidStartNotification { get; }
@@ -105,7 +107,8 @@ namespace SinchBinding {
     // @protocol SINClient <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINClient {
+    interface SINClient
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINClientDelegate Delegate { get; set; }
 
@@ -250,7 +253,8 @@ namespace SinchBinding {
     // @protocol SINClientDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINClientDelegate {
+    interface SINClientDelegate
+    {
         // @required -(void)clientDidStart:(id<SINClient>)client;
         [Abstract]
         [Export("clientDidStart:")]
@@ -277,7 +281,8 @@ namespace SinchBinding {
     // @protocol SINClientRegistration <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINClientRegistration {
+    interface SINClientRegistration
+    {
         // @required -(void)registerWithSignature:(NSString *)signature sequence:(uint64_t)sequence;
         [Abstract]
         [Export("registerWithSignature:sequence:")]
@@ -289,12 +294,13 @@ namespace SinchBinding {
         void RegisterDidFail(NSError error);
     }
 
-   
+
 
     // @protocol SINCallClient <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCallClient {
+    interface SINCallClient
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINCallClientDelegate Delegate { get; set; }
 
@@ -362,7 +368,8 @@ namespace SinchBinding {
     // @protocol SINCallClientDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCallClientDelegate {
+    interface SINCallClientDelegate
+    {
         // @optional -(void)client:(id<SINCallClient>)client willReceiveIncomingCall:(id<SINCall>)call;
         [Export("client:willReceiveIncomingCall:")]
         void WillReceiveIncomingCall(ISINCallClient client, ISINCall call);
@@ -379,7 +386,8 @@ namespace SinchBinding {
     // @protocol SINCall <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCall {
+    interface SINCall
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINCallDelegate Delegate { get; set; }
 
@@ -452,7 +460,8 @@ namespace SinchBinding {
     // @protocol SINCallDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCallDelegate {
+    interface SINCallDelegate
+    {
         // @optional -(void)callDidEnd:(id<SINCall>)call;
         [Export("callDidEnd:")]
         void CallDidEnd(ISINCall call);
@@ -486,7 +495,8 @@ namespace SinchBinding {
     // @protocol SINCallDetails <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCallDetails {
+    interface SINCallDetails
+    {
         // @required @property (readonly, nonatomic, strong) NSDate * startedTime;
         [Abstract]
         [Export("startedTime", ArgumentSemantic.Strong)]
@@ -526,7 +536,8 @@ namespace SinchBinding {
     // @protocol SINMessageClient <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessageClient {
+    interface SINMessageClient
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINMessageClientDelegate Delegate { get; set; }
 
@@ -544,7 +555,8 @@ namespace SinchBinding {
     // @protocol SINMessageClientDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessageClientDelegate {
+    interface SINMessageClientDelegate
+    {
         // @required -(void)messageClient:(id<SINMessageClient>)messageClient didReceiveIncomingMessage:(id<SINMessage>)message;
         [Abstract]
         [Export("messageClient:didReceiveIncomingMessage:")]
@@ -574,7 +586,8 @@ namespace SinchBinding {
     // @protocol SINMessage <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessage {
+    interface SINMessage
+    {
         // @required @property (readonly, nonatomic) NSString * messageId;
         [Abstract]
         [Export("messageId")]
@@ -609,7 +622,8 @@ namespace SinchBinding {
 
     // @interface SINOutgoingMessage : NSObject
     [BaseType(typeof(NSObject))]
-    interface SINOutgoingMessage {
+    interface SINOutgoingMessage
+    {
         // @property (readonly, nonatomic) NSString * messageId;
         [Export("messageId")]
         string MessageId { get; }
@@ -651,7 +665,8 @@ namespace SinchBinding {
     // @protocol SINMessageDeliveryInfo <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessageDeliveryInfo {
+    interface SINMessageDeliveryInfo
+    {
         // @required @property (readonly, copy, nonatomic) NSString * messageId;
         [Abstract]
         [Export("messageId")]
@@ -671,7 +686,8 @@ namespace SinchBinding {
     // @protocol SINMessageFailureInfo <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessageFailureInfo {
+    interface SINMessageFailureInfo
+    {
         // @required @property (readonly, copy, nonatomic) NSString * messageId;
         [Abstract]
         [Export("messageId")]
@@ -691,7 +707,8 @@ namespace SinchBinding {
     // @protocol SINAudioController <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINAudioController {
+    interface SINAudioController
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINAudioControllerDelegate Delegate { get; set; }
 
@@ -734,7 +751,8 @@ namespace SinchBinding {
     // @protocol SINAudioControllerDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINAudioControllerDelegate {
+    interface SINAudioControllerDelegate
+    {
         // @optional -(void)audioControllerMuted:(id<SINAudioController>)audioController;
         [Export("audioControllerMuted:")]
         void AudioControllerMuted(ISINAudioController audioController);
@@ -755,7 +773,8 @@ namespace SinchBinding {
     // @protocol SINVideoFrame <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINVideoFrame {
+    interface SINVideoFrame
+    {
         // @required @property (readonly) int width;
         [Abstract]
         [Export("width")]
@@ -780,7 +799,8 @@ namespace SinchBinding {
     // @protocol SINVideoFrameCallback <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINVideoFrameCallback {
+    interface SINVideoFrameCallback
+    {
         // @required -(void)onFrame:(id<SINVideoFrame>)videoFrame callId:(NSString *)callId;
         [Abstract]
         [Export("onFrame:callId:")]
@@ -790,7 +810,8 @@ namespace SinchBinding {
     // @protocol SINLocalVideoFrameCallback <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINLocalVideoFrameCallback {
+    interface SINLocalVideoFrameCallback
+    {
         // @required -(void)onFrame:(CVPixelBufferRef)cvPixelBuffer completionHandler:(void (^)(CVPixelBufferRef))completionHandler;
         //[Abstract]
         //[Export("onFrame:completionHandler:")]
@@ -800,7 +821,8 @@ namespace SinchBinding {
     // @protocol SINVideoController <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINVideoController {
+    interface SINVideoController
+    {
         // @required @property (assign, readwrite, nonatomic) AVCaptureDevicePosition captureDevicePosition;
         [Abstract]
         [Export("captureDevicePosition", ArgumentSemantic.Assign)]
@@ -834,7 +856,8 @@ namespace SinchBinding {
 
     // @protocol SINPushPair
     [Protocol, Model]
-    interface SINPushPair {
+    interface SINPushPair
+    {
         // @required @property (retain, nonatomic) NSData * pushData;
         [Abstract]
         [Export("pushData", ArgumentSemantic.Retain)]
@@ -851,7 +874,8 @@ namespace SinchBinding {
     // @protocol SINManagedPush <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINManagedPush {
+    interface SINManagedPush
+    {
         //[Wrap("WeakDelegate"), Abstract]
         //SINManagedPushDelegate Delegate { get; set; }
 
@@ -899,7 +923,8 @@ namespace SinchBinding {
     // @protocol SINManagedPushDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINManagedPushDelegate {
+    interface SINManagedPushDelegate
+    {
         // @required -(void)managedPush:(id<SINManagedPush>)managedPush didReceiveIncomingPushWithPayload:(NSDictionary *)payload forType:(NSString *)pushType;
         [Abstract]
         [Export("managedPush:didReceiveIncomingPushWithPayload:forType:")]
@@ -909,7 +934,8 @@ namespace SinchBinding {
     // @interface SINRemoteNotificationAdditions (NSDictionary)
     [Category]
     [BaseType(typeof(NSDictionary))]
-    interface NSDictionary_SINRemoteNotificationAdditions {
+    interface NSDictionary_SINRemoteNotificationAdditions
+    {
         // -(BOOL)sin_isSinchPushPayload;
         [Static]
         [Export("sin_isSinchPushPayload")]
@@ -918,7 +944,8 @@ namespace SinchBinding {
 
     // @interface SINPushHelper : NSObject
     [BaseType(typeof(NSObject))]
-    interface SINPushHelper {
+    interface SINPushHelper
+    {
         // +(id<SINNotificationResult>)queryPushNotificationPayload:(NSDictionary *)userInfo;
         [Static]
         [Export("queryPushNotificationPayload:")]
@@ -927,7 +954,8 @@ namespace SinchBinding {
 
     // @interface SINLocalNotification : NSObject
     [BaseType(typeof(NSObject))]
-    interface SINLocalNotification {
+    interface SINLocalNotification
+    {
         // @property (copy, nonatomic) NSString * alertBody;
         [Export("alertBody")]
         string AlertBody { get; set; }
@@ -961,7 +989,8 @@ namespace SinchBinding {
     // @interface SINLocalNotificationSinchAdditions (UILocalNotification)
     [Category]
     [BaseType(typeof(UILocalNotification))]
-    interface UILocalNotification_SINLocalNotificationSinchAdditions {
+    interface UILocalNotification_SINLocalNotificationSinchAdditions
+    {
         // -(BOOL)sin_isSinchNotification;
         [Static]
         [Export("sin_isSinchNotification")]
@@ -981,7 +1010,8 @@ namespace SinchBinding {
     // @protocol SINNotificationResult <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINNotificationResult {
+    interface SINNotificationResult
+    {
         // @required @property (readonly, assign, nonatomic) BOOL isValid;
         [Abstract]
         [Export("isValid")]
@@ -1011,7 +1041,8 @@ namespace SinchBinding {
     // @protocol SINCallNotificationResult <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINCallNotificationResult {
+    interface SINCallNotificationResult
+    {
         // @required @property (readonly, assign, nonatomic) BOOL isTimedOut;
         [Abstract]
         [Export("isTimedOut")]
@@ -1046,7 +1077,8 @@ namespace SinchBinding {
     // @protocol SINMessageNotificationResult <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface SINMessageNotificationResult {
+    interface SINMessageNotificationResult
+    {
         // @required @property (readonly, copy, nonatomic) NSString * messageId;
         [Abstract]
         [Export("messageId")]
@@ -1062,7 +1094,8 @@ namespace SinchBinding {
 
     // @interface Sinch : NSObject
     [BaseType(typeof(NSObject))]
-    interface Sinch {
+    interface Sinch
+    {
         // +(id<SINClient>)clientWithApplicationKey:(NSString *)applicationKey environmentHost:(NSString *)environmentHost userId:(NSString *)userId;
         [Static]
         [Export("clientWithApplicationKey:environmentHost:userId:")]
